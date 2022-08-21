@@ -1,0 +1,56 @@
+.Blogs{
+    padding: 10px;
+    user-select: none;
+    .title{
+        font-family: $MF;
+        padding: 10px 0;
+        color: white;
+    }
+    .cards{
+        .cards-wrapper{
+            display: grid;
+            cursor: pointer;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            @include responsive(xl){
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+            @include responsive(lg){
+                grid-template-columns: 1fr 1fr;
+            }
+            @include responsive(sm){
+                grid-template-columns: 1fr;
+            }
+            gap: 15px;
+            .card{
+                background-repeat: no-repeat;
+                background-size: cover;
+                background-position: center;
+                border-radius: 15px;
+                box-shadow: 0 0 1rem 0 rgba(0, 0, 0, .2); 
+                min-height: 300px;
+                display: flex;
+                flex-direction: column;
+                overflow: hidden;
+                justify-content: flex-end;
+                .space-100{
+                    padding: 100px 0;
+                }
+                .content{
+                    background-color: rgba(255, 255, 255, .15);
+                    backdrop-filter: blur(30px);
+                    position: relative;
+                    z-index: 5;
+                    padding: 15px 20px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    color: black;
+                    .title-card, .desc, .author{
+                        font-family: $MF;
+                        font-weight: 400;
+                    }
+                }
+            }
+        }
+    }
+}

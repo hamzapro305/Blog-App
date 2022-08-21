@@ -1,15 +1,15 @@
 import PageTransitionLayout from "Components/GlobalComponents/PageTransitionLayout";
 import Head from "next/head";
 
-const Home = () => {
+const EditProfile = () => {
   return (
     <PageTransitionLayout>
       <Head>
-        <title>Blog App</title>
+        <title>Edit Profile</title>
       </Head>
-      Home
+      EditProfile
     </PageTransitionLayout>
   );
 };
 
-export default Home;
+export default EditProfile;

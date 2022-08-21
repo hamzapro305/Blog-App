@@ -1,0 +1,84 @@
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+// Breakpoints Structure
+$custom-breakpoints: (
+    xs: (minSize: 0px, maxSize: 575px, maxContWidth: 0px, name: 'XS'), // vertical mobile layout
+    sm: (minSize: 576px, maxSize: 767px, maxContWidth: 719px, name: 'SM'), //horizontal mobile layout
+    md: (minSize: 768px, maxSize: 991px, maxContWidth: 720px, name: 'MD'), //ipad
+    lg: (minSize: 992px, maxSize: 1249px, maxContWidth: 960px, name: 'LG'), //ipad pro
+    xl: (minSize: 1250px, maxSize: 1499px, maxContWidth: 1250px, name: 'XL'),
+    max: (minSize: 1500px, maxSize: 0px, maxContWidth: 1201px, name: 'MAX')
+);
+@mixin responsive($breakpoint) { 
+    @if map-has-key($custom-breakpoints, $breakpoint) {
+        @media (max-width: #{map-get(map-get($custom-breakpoints, $breakpoint), maxSize)}) {
+          @content;
+        }
+    }
+    @else {
+        @warn "Breakpoint #{$breakpoint} does not exist. Check case sensitivity.";
+    }
+}
+
+
+// Variables 
+$MF: 'Roboto', sans-serif;
+$BG: #355764;
+$LightClr1: #5A8F7B;
+$LightClr2: #81CACF;
+$YellowClr: #FFEA11;
+
+// Large Title Sizing 
+@mixin TitleWithLargeSize(){
+    font-size: 65px;
+    @include responsive(md){
+        font-size: 35px;
+    }
+    @include responsive(sm){
+        font-size: 25px;
+    }
+}
+// Large Title Sizing 
+@mixin TitleWithLargeSize45px(){
+    font-size: 45px;
+    @include responsive(md){
+        font-size: 30px;
+    }
+    @include responsive(sm){
+        font-size: 25px;
+    }
+}
+// Normal Text Sizing  
+@mixin TextNormalSize {
+    font-size: 18px;
+    @include responsive(md){
+        font-size: 14px;
+    }
+    @include responsive(sm){
+        font-size: 12px;
+    }
+}
+
+// For Spacing Between Component 
+@mixin SPACE($space, $space-lg, $space-md) {
+    padding-top: #{$space}px;
+    @include responsive(lg){
+        padding-top: #{$space-lg}px;
+    }
+    @include responsive(md){
+        padding-top: #{$space-md}px;
+    }
+}
+
+// Max Width For Components
+@mixin MaxWidthPage {
+    max-width: 1800px;
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
+// Max Width For Inner Page
+@mixin MaxWidthInnerComponent {
+    max-width: 1620px;
+    margin: 0 auto;
+}

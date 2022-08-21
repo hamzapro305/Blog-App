@@ -1,0 +1,138 @@
+.CreateBlog {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    .CreateBlog-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+        width: 100%;
+        max-width: 800px;
+        button {
+            align-self: flex-start;
+        }
+        .input {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            background-color: white;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            input,
+            textarea {
+                padding: 10px 25px;
+                background-color: transparent;
+                border: none;
+                outline: none;
+                resize: none;
+            }
+        }
+        .image {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            padding: 10px 25px;
+            cursor: pointer;
+            background-color: white;
+            border-radius: 5px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            img {
+                width: 100%;
+                height: 300px;
+                object-fit: contain;
+            }
+            input {
+                display: none;
+            }
+        }
+        .editor-wrapper {
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            background-color: white;
+            padding: 25px;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            width: 100%;
+            .ProseMirror {
+                outline: none;
+            }
+            .menuBar {
+                .menu-wrapper {
+                    display: flex;
+                    gap: 5px;
+                    flex-wrap: wrap;
+                    button {
+                        padding: 8px;
+                        border: none;
+                        cursor: pointer;
+                        border-radius: 4px;
+                        background-color: $BG;
+                        color: white;
+                        display: flex;
+                    }
+                }
+            }
+        }
+    }
+}
+/* TitTap Editor Design */
+.ProseMirror {
+    padding: 10px 0;
+    min-height: 100px;
+    &:focus {
+        border: none;
+        outline: 1px solid aqua;
+    }
+    ul,
+    ol {
+        padding: 0 2rem;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        line-height: 1.1;
+    }
+    code {
+        background-color: rgba(#616161, 0.1);
+        color: #616161;
+        color: inherit;
+        padding: 0;
+        background: none;
+        font-size: 0.8rem;
+    }
+    pre {
+        background: #0d0d0d;
+        color: #fff;
+        font-family: "JetBrainsMono", monospace;
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    blockquote {
+        padding-left: 1rem;
+        border-left: 3px solid #999999;
+    }
+    hr {
+        border: none;
+        border-top: 3px solid #999999;
+        margin: 2rem 0;
+    }
+    > * + * {
+        margin-top: 0.75em;
+    }
+}
+// .ProseMirror > * + * {
+//     margin-top: 0.75em;
+// }

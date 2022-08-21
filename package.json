@@ -6,12 +6,28 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "export": "next export"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.3",
+    "@tiptap/extension-image": "^2.0.0-beta.30",
+    "@tiptap/extension-underline": "^2.0.0-beta.25",
+    "@tiptap/react": "^2.0.0-beta.114",
+    "@tiptap/starter-kit": "^2.0.0-beta.191",
+    "axios": "^0.27.2",
+    "firebase": "^9.9.2",
+    "framer-motion": "^7.0.0",
+    "html-react-parser": "^3.0.1",
     "next": "12.2.4",
+    "next-redux-wrapper": "^7.0.5",
+    "next-seo": "^5.5.0",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-icons": "^4.4.0",
+    "react-redux": "^8.0.2",
+    "react-toastify": "^9.0.8",
+    "sass": "^1.54.3"
   },
   "devDependencies": {
     "eslint": "8.21.0",

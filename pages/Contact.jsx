@@ -1,15 +1,15 @@
 import PageTransitionLayout from "Components/GlobalComponents/PageTransitionLayout";
 import Head from "next/head";
 
-const Home = () => {
+const Contact = () => {
   return (
     <PageTransitionLayout>
       <Head>
-        <title>Blog App</title>
+        <title>Contact Us</title>
       </Head>
-      Home
+      Contact
     </PageTransitionLayout>
   );
 };
 
-export default Home;
+export default Contact;

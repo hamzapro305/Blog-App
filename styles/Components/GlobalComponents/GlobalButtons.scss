@@ -1,0 +1,99 @@
+.GlobalMainButton {
+    border-radius: 10px;
+    background-color: $LightClr1;
+    padding: 10px 30px;
+    border: none;
+    outline: none;
+    font-family: $MF;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    color: #ffffff;
+    cursor: pointer;
+    white-space: nowrap;
+    text-transform: capitalize;
+    display: flex;
+    img {
+        width: 75px;
+        height: 17px;
+        object-fit: cover;
+    }
+    @include responsive(sm) {
+        font-size: 12px;
+        padding: 10px 25px;
+    }
+}
+.GlobalDarkButton {
+    border-radius: 10px;
+    color: white;
+    font-family: $MF;
+    padding: 10px 30px;
+    cursor: pointer;
+    border: none;
+    text-transform: capitalize;
+    img {
+        width: 75px;
+        height: 17px;
+        object-fit: cover;
+    }
+    @include responsive(sm) {
+        font-size: 12px;
+        padding: 10px 25px;
+    }
+}
+
+.GlobalLightButton {
+    padding: 10px 30px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    @include responsive(sm) {
+        padding: 10px 25px;
+    }
+    p {
+        font-family: $MF;
+        font-style: normal;
+        font-weight: 600;
+        text-transform: capitalize;
+        font-size: 16px;
+        background: linear-gradient(
+            180deg,
+            rgba(19, 30, 242, 0.77) 0%,
+            rgba(102, 1, 180, 0.5313) 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        img {
+            width: 75px;
+            height: 17px;
+            object-fit: cover;
+        }
+        @include responsive(sm) {
+            font-size: 12px;
+        }
+    }
+}
+
+.GlobalCheckBox {
+    background-color: white;
+    width: 80px;
+    height: 30px;
+    border-radius: 20px;
+    padding: 3px 2px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    img {
+        width: 20px;
+    }
+    .ball {
+        width: 39px;
+        height: 25px;
+        border-radius: 85px;
+        background: rgba(80, 80, 80, 0.5);
+        &.on {
+            background: linear-gradient(5.08deg, #131ef2 4.3%, #941cf0 117.19%);
+        }
+    }
+}
