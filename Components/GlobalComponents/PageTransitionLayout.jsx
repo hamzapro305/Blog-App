@@ -9,6 +9,7 @@ const PageTransitionLayout = ({ children }) => {
     return (
         <motion.main
             initial="hidden"
+            layout
             animate="enter"
             exit="exit"
             variants={variants}

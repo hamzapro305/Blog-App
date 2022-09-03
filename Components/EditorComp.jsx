@@ -103,7 +103,7 @@ const EditorComp = ({ context, Upload }) => {
             </div>
             <GlobalLightButton
                 isLoading={isLoading}
-                children="Upload"
+                Content="Upload"
                 onClick={() =>
                     Upload(
                         setIsLoading,

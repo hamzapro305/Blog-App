@@ -37,7 +37,7 @@ const Header = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const router = useRouter();
     return (
-        <div className="Header">
+        <motion.div layout className="Header">
             <header>
                 <div className="Desktop_Nav">
                     <motion.div
@@ -66,7 +66,7 @@ const Header = () => {
                             ))}
 
                             <GlobalMainButton
-                                children="New Blog"
+                                Content="New Blog"
                                 onClick={() => router.push("/CreateBlog")}
                             />
                         </ul>
@@ -110,23 +110,21 @@ const Header = () => {
                                             <li key={R.name}>
                                                 <Link href={R.path}>
                                                     <motion.p
-                                                        whileHover={{
-                                                            scale: 1.1,
-                                                        }}
-                                                        whileTap={{
-                                                            scale: 0.9,
-                                                        }}
-                                                        onClick={() =>
-                                                            setIsSidebarOpen(
-                                                                false
-                                                            )
-                                                        }
-                                                    >
+                                                        whileHover={{ scale: 1.1, }}
+                                                        whileTap={{ scale: 0.9, }}
+                                                        onClick={() => setIsSidebarOpen( false ) } >
                                                         {R.name}
                                                     </motion.p>
                                                 </Link>
                                             </li>
                                         ))}
+                                        <GlobalMainButton
+                                            Content="New Blog"
+                                            onClick={() => {
+                                                setIsSidebarOpen( false ) 
+                                                router.push("/CreateBlog")
+                                            }}
+                                        />
                                     </ul>
                                 </nav>
                             </div>
@@ -134,7 +132,7 @@ const Header = () => {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </div>
+        </motion.div>
     );
 };
 

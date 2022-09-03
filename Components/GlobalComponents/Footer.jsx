@@ -4,9 +4,11 @@ import { RiInstagramFill } from "react-icons/ri";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
+
+
 const Footer = () => {
   return (
-    <footer className="Footer">
+    <motion.footer layout  {...FooterAnimation}  className="Footer">
       <div className="wrapper">
         <div className="head">
           <div className="logo">
@@ -44,7 +46,7 @@ const Footer = () => {
           }
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 
@@ -87,5 +89,18 @@ const FooterRoutes = [
     ]
   }
 ]
+
+const FooterAnimationVariants = {
+    hidden: { opacity: 0, transition: { duration: 0.8 } },
+    enter: { opacity: 1, transition: { duration: 0.8 } },
+    exit: { opacity: 0, transition: { duration: 0.8 } }
+}
+
+const FooterAnimation = {
+  variants: FooterAnimationVariants,
+  initial: "hidden",
+  animate: "enter",
+  exit: "exit",
+}
 
 export default Footer;

@@ -2,9 +2,8 @@
     .page {
         .content {
             .image {
-                img {
-                    width: 100%;
-                }
+                position: relative;
+                height: 500px;
             }
         }
     }

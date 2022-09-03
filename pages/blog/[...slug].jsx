@@ -3,17 +3,14 @@ import parse from "html-react-parser";
 import { useDispatch, useSelector } from "react-redux";
 import { setBlog } from "../../Redux/Slices/BlogsSlice";
 import { useEffect } from "react";
-import { useRouter } from "next/router";
 import { PLACE_HOLDER } from "../../Assets";
 import PageTransitionLayout from "Components/GlobalComponents/PageTransitionLayout";
-import { NextSeo } from "next-seo";
 import Head from "next/head";
 import Image from "next/image";
 
 const Blog = ({ FetchedBlog }) => {
     const dispatch = useDispatch();
     const Blog = useSelector((state) => state.Blogs.Blog);
-    const router = useRouter();
     useEffect(() => {
         dispatch(setBlog(FetchedBlog));
         return () => {
@@ -57,14 +54,13 @@ const Blog = ({ FetchedBlog }) => {
                         <h1>{Blog.title}</h1>
                         <div className="image">
                             <Image
-                                src={Blog.image ? Blog.image : PLACE_HOLDER.src}
-                                width="100%"
-                                height="30px"
-                                layout="responsive"
+                                src={Blog.image ? Blog.image : PLACE_HOLDER}
+                                layout="fill"
+                                quality={100}
                                 objectFit="cover"
-                                sizes="100%"
                                 alt="image"
-                                blurDataURL={PLACE_HOLDER.src}                            />
+                                placeholder={PLACE_HOLDER}
+                            />
                         </div>
                         <p>{Blog.description}</p>
                         <div className="blog">
@@ -79,6 +75,7 @@ const Blog = ({ FetchedBlog }) => {
 
 export async function getServerSideProps(context) {
     const Blog = await BlogApi.getBlog(context.params.slug[0]);
+
     const result = {
         title: Blog.title,
         description: Blog.description,

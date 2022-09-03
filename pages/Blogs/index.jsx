@@ -4,7 +4,7 @@ import Head from "next/head";
 import { PLACE_HOLDER } from "../../Assets";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllBlogs, setBlog } from "../../Redux/Slices/BlogsSlice";
+import { getAllBlogs } from "Redux/Slices/BlogsSlice";
 import PageTransitionLayout from "Components/GlobalComponents/PageTransitionLayout";
 
 const Blogs = () => {
@@ -15,8 +15,7 @@ const Blogs = () => {
     }, [dispatch]);
     const router = useRouter();
     const PushToBlog = (Blog) => {
-        dispatch(setBlog(Blog));
-        router.push(`/blog/${Blog.id}/selected`);
+        router.push(`/blog/${Blog.id}`);
     };
     return (
         <PageTransitionLayout>

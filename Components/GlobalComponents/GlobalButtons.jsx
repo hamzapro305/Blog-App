@@ -1,11 +1,12 @@
 import Image from "next/image";
 import { BUTTON_BUFFER } from "../../Assets";
 import { motion } from "framer-motion";
+import { WarnToast } from "Components/HSToast";
 
 const GlobalMainButton = ({
     disabled,
     onClick,
-    children,
+    Content,
     cssClass,
     isLoading,
 }) => (
@@ -15,35 +16,51 @@ const GlobalMainButton = ({
         disabled={disabled === true ? true : false}
         className={`GlobalMainButton ${cssClass ? cssClass : ""}`}
         onClick={() => {
-            if (isLoading) return;
+            if (isLoading) {
+                WarnToast("Please Wait")
+                return;
+            }
+        
             onClick ? onClick() : ""
         }}
     >
-        {isLoading ? <Image src={BUTTON_BUFFER} width="80" height="20" objectFit="cover" /> : children}
+        {isLoading ? <Image src={BUTTON_BUFFER} width="80" height="20" objectFit="cover" /> : Content}
     </motion.button>
 );
 
-const GlobalDarkButton = ({ disabled, onClick, children, cssClass }) => (
+const GlobalDarkButton = ({ disabled, onClick, Content, cssClass, isLoading }) => (
     <motion.button
         whileTap={{scale: .9}}
         whileHover={{scale: 1.04}}
         disabled={disabled === true ? true : false}
         className={`GlobalDarkButton ${cssClass ? cssClass : ""}`}
-        onClick={onClick}
+        onClick={() => {
+            if (isLoading) {
+                WarnToast("Please Wait")
+                return;
+            }
+            onClick ? onClick() : ""
+        }}
     >
-        {children}
+        {Content}
     </motion.button>
 );
 
-const GlobalLightButton = ({ disabled, onClick, children, cssClass }) => (
+const GlobalLightButton = ({ disabled, onClick, Content, cssClass, isLoading }) => (
     <motion.button
         whileTap={{scale: .9}}
         whileHover={{scale: 1.04}}
         disabled={disabled === true ? true : false}
         className={`GlobalLightButton ${cssClass ? cssClass : ""}`}
-        onClick={onClick}
+        onClick={() => {
+            if (isLoading) {
+                WarnToast("Please Wait")
+                return;
+            }
+            onClick ? onClick() : ""
+        }}
     >
-        <p>{children}</p>
+        <p>{Content}</p>
     </motion.button>
 );
 
