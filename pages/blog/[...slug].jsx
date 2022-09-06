@@ -1,16 +1,19 @@
 import BlogApi from "../../Utils/BlogApi";
 import parse from "html-react-parser";
 import { useDispatch, useSelector } from "react-redux";
-import { setBlog } from "../../Redux/Slices/BlogsSlice";
+import { setBlog, setBlogComments } from "../../Redux/Slices/BlogsSlice";
 import { useEffect } from "react";
 import { PLACE_HOLDER } from "../../Assets";
 import PageTransitionLayout from "Components/GlobalComponents/PageTransitionLayout";
 import Head from "next/head";
 import Image from "next/image";
+import SingleBlogCommentActions from "Firebase/SingleBlogCommentActions";
+import BlogComments from "Components/BlogComments/BlogComments";
 
 const Blog = ({ FetchedBlog }) => {
     const dispatch = useDispatch();
     const Blog = useSelector((state) => state.Blogs.Blog);
+
     useEffect(() => {
         dispatch(setBlog(FetchedBlog));
         return () => {
@@ -21,10 +24,31 @@ const Blog = ({ FetchedBlog }) => {
                     Author: "",
                     content: "",
                     createdAt: 0,
+                    image: "",
+                    id: "",
                 })
             );
         };
     }, [dispatch, FetchedBlog]);
+
+    useEffect(() => {
+        let un;
+        if(Blog?.id){
+            SingleBlogCommentActions.fetchComments(Blog?.id, (data, uns) => {
+                un = uns;
+                dispatch(setBlogComments(data))
+            })
+        }
+      return () => {
+        if(un){
+            un()
+            dispatch(setBlogComments([]))
+        }
+      }
+    }, [Blog?.id, dispatch])
+    
+    
+
     return (
         <PageTransitionLayout>
             <div className="SingleBlog">
@@ -67,6 +91,7 @@ const Blog = ({ FetchedBlog }) => {
                             {parse(Blog.content ? Blog.content : "")}
                         </div>
                     </div>
+                    <BlogComments id={Blog?.id} />
                 </div>
             </div>
         </PageTransitionLayout>

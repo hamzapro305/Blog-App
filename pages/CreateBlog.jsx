@@ -1,13 +1,12 @@
 import EditorComp from "Components/EditorComp";
 import PageTransitionLayout from "Components/GlobalComponents/PageTransitionLayout";
-import Loader from "Components/Loader";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import AuthProtectionFunction from "Utils/AuthProtectionFunction";
-import { ErrorToast, WarnToast } from "../Components/HSToast";
+import { ErrorToast } from "../Components/HSToast";
 import BlogApi from "../Utils/BlogApi";
 
 const CreateBlog = () => {

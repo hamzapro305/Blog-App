@@ -1,0 +1,61 @@
+.BlogComments{
+    user-select: auto;
+    .head{
+        .title{
+            font-size: 45px;
+            font-weight: 700;
+        }
+    }
+    .AllComments{
+        margin: 20px 0;
+        margin-left: -40px;
+        .BlogComment{
+            margin: 10px 0;
+            margin-left: 55px;
+            .body{
+                display: flex;
+                gap: 15px;
+                align-items: center;
+                .left{
+                    img{
+                        border-radius: 50%;
+                    }
+                }
+                .right{
+                    .actions{
+                        margin: 10px 0;
+                        display: flex;
+                        gap: 15px;
+                        button{
+                            padding: 2px 15px;
+                            p{
+                                font-size: 14px;
+                                margin: 4px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .addComment{
+        display: flex;
+        gap: 15px;
+        padding: 15px 0;
+        input{
+            flex: 1;
+            padding: 5px 10px;
+            border-radius: .4rem;
+            outline: none;
+            border: none;
+            color: black;
+        }
+        button{
+            padding: 2px 15px;
+            p{
+                font-size: 14px;
+                margin: 4px;
+            }
+        }
+    }
+}

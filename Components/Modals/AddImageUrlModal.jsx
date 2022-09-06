@@ -27,7 +27,7 @@ const AddImageUrlModal = ({ setModal, callBack }) => {
                 <div className="wrap">
                     <div className="head">
                         <div className="title">Add Image Url</div>
-                        <GlobalMainButton children="X" onClick={onClick} />
+                        <GlobalMainButton Content="X" onClick={onClick} />
                     </div>
                     <div className="input">
                         <input
@@ -36,7 +36,7 @@ const AddImageUrlModal = ({ setModal, callBack }) => {
                             onChange={(e) => setUrl(e.target.value)}
                         />
                     </div>
-                    <GlobalMainButton children="Submit" onClick={Submit} />
+                    <GlobalMainButton Content="Submit" onClick={Submit} />
                 </div>
             </div>
         </BackDrop>

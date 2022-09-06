@@ -5,37 +5,15 @@ import { ImCross } from "react-icons/im";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { GlobalMainButton } from "./GlobalButtons";
-
-const Navs = [
-    {
-        name: "Home",
-        path: "/",
-    },
-    {
-        name: "Profile",
-        path: "/Dashboard/Profile",
-    },
-    {
-        name: "Edit Profile",
-        path: "/Dashboard/EditProfile",
-    },
-    {
-        name: "Blogs",
-        path: "/Blogs",
-    },
-    {
-        name: "Login",
-        path: "/Login",
-    },
-    {
-        name: "Contact",
-        path: "/Contact",
-    },
-];
+import { NavigationCheck } from "Components/Data/Routes";
+import { useSelector } from "react-redux";
 
 const Header = () => {
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const router = useRouter();
+
+    const isLoggedIn = useSelector(s => s.Auth.isLoggedIn)
+
     return (
         <motion.div layout className="Header">
             <header>
@@ -49,7 +27,7 @@ const Header = () => {
                     </motion.div>
                     <nav>
                         <ul>
-                            {Navs.map((R) => (
+                            {NavigationCheck(isLoggedIn).map((R) => (
                                 <motion.li
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.9 }}
@@ -106,7 +84,7 @@ const Header = () => {
                             <div className="content">
                                 <nav>
                                     <ul>
-                                        {Navs.map((R) => (
+                                        {NavigationCheck(isLoggedIn).map((R) => (
                                             <li key={R.name}>
                                                 <Link href={R.path}>
                                                     <motion.p

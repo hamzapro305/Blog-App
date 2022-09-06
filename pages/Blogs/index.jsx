@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllBlogs } from "Redux/Slices/BlogsSlice";
 import PageTransitionLayout from "Components/GlobalComponents/PageTransitionLayout";
+import Image from "next/image";
 
 const Blogs = () => {
     const dispatch = useDispatch();
@@ -31,17 +32,10 @@ const Blogs = () => {
                                 return (
                                     <motion.div
                                         key={b.id}
-                                        whileTap={{scale: 0.9}}
                                         className="card"
                                         onClick={() => PushToBlog(b)}
-                                        style={{
-                                            backgroundImage: `url("${
-                                                b.image
-                                                    ? b.image
-                                                    : PLACE_HOLDER.src
-                                            }")`,
-                                        }}
                                     >
+                                        <Image alt="" placeholder={PLACE_HOLDER} src={b?.image ? b.image : PLACE_HOLDER} layout="fill" objectFit="cover" quality={1} />
                                         <div className="space-100"></div>
                                         <div className="content">
                                             <div className="title-card">

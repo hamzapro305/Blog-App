@@ -1,0 +1,84 @@
+.LoginPage{
+    padding: 50px 20px;
+    display: flex;
+    justify-content: center;
+    .login-page-wrapper{
+        background-color: white;
+        width: 500px;
+        border-radius: 1rem;
+        .head{
+            padding: 20px 40px;
+            font-family: $MF;
+            font-size: 20px;
+            font-weight: 500;
+        }
+        .Login-signup-wrapper{
+            padding: 0px 40px;
+            padding-bottom: 15px;
+            .Login, .SignUp{
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                .swap{
+                    display: flex;
+                    justify-content: center;
+                    gap: 4px;
+                }
+                .or{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: stretch;
+                    margin-top: 15px;
+                    p{
+                        align-self: center;
+                        border: 1px solid rgb(178, 178, 178);
+                        padding: 4px;
+                        background-color: white;
+                        margin-top: -14px;
+                        border-radius: .2rem;
+                    }
+                }
+                .providers{
+                    display: flex;
+                    justify-content: center;
+                    gap: 15px;
+                    button{
+                        background-color: transparent;
+                        border: none;
+                        cursor: pointer;
+                        font-size: 45px;
+                    }
+                }
+                .all-inputs{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: stretch;
+                    gap: 10px;
+                    button{
+                        display: flex;
+                        justify-content: center;
+                    }
+                    .remember{
+                        display: flex;
+                        gap: 5px;
+                    }
+                    .input{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 4px;
+                        p{
+                            font-family: $MF;
+                        }
+                        input{
+                            width: 100%;
+                            padding: 10px;
+                            outline: none;
+                            border: 2px solid $BG;
+                            border-radius: .2rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

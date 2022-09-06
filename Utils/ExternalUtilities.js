@@ -3,7 +3,7 @@ import Header from "Components/GlobalComponents/Header";
 import HSToast from "Components/HSToast";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "Firebase/firebase";
-import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "Redux/Slices/UserSlice";
@@ -23,21 +23,19 @@ const ExternalUtilities = ({ AllPages }) => {
     }, []);
 
     return (
-        <LayoutGroup>
-            <motion.div layout className="Main_Blog_App">
-                {header && <Header />}
-                <AnimatePresence
-                    exitBeforeEnter
-                    initial={false}
-                    onExitComplete={() => window.scrollTo(0, 0)}
-                    presenceAffectsLayout
-                >
-                    {AllPages}
-                </AnimatePresence>
-                {footer && <Footer />}
-                <HSToast />
-            </motion.div>
-        </LayoutGroup>
+        <div className="Main_Blog_App">
+            {header && <Header />}
+            <AnimatePresence
+                exitBeforeEnter
+                initial={false}
+                onExitComplete={() => window.scrollTo(0, 0)}
+                presenceAffectsLayout
+            >
+                {AllPages}
+            </AnimatePresence>
+            {footer && <Footer />}
+            <HSToast />
+        </div>
     );
 };
 

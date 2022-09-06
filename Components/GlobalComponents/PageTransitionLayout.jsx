@@ -9,11 +9,10 @@ const PageTransitionLayout = ({ children }) => {
     return (
         <motion.main
             initial="hidden"
-            layout
             animate="enter"
             exit="exit"
             variants={variants}
-            transition={{ type: "linear" }}
+            // transition={{ type: "linear" }}
             className="inner_app_transition_max_width_wrapper"
         >
             {children}

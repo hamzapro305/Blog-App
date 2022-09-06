@@ -7,9 +7,9 @@ const AuthProtectionFunction = (useEffect, useSelector, useRouter, JSX) => {
     useEffect(() => {
       if(isLoggedIn === false){
         WarnToast("User Is Not Valid")
-        router.push('/')
+        router.push('/Login')
       }
-    }, [])
+    }, [isLoggedIn])
 
     return isLoggedIn ? JSX : <Loader />
 }

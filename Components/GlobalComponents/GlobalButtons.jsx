@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { BUTTON_BUFFER } from "../../Assets";
+import { BUTTON_BUFFER, LOADING_BUFFER } from "../../Assets";
 import { motion } from "framer-motion";
 import { WarnToast } from "Components/HSToast";
 
@@ -24,7 +24,7 @@ const GlobalMainButton = ({
             onClick ? onClick() : ""
         }}
     >
-        {isLoading ? <Image src={BUTTON_BUFFER} width="80" height="20" objectFit="cover" /> : Content}
+        {isLoading ? <Image src={LOADING_BUFFER} width="80" height="20" objectFit="cover" /> : Content}
     </motion.button>
 );
 
@@ -42,7 +42,7 @@ const GlobalDarkButton = ({ disabled, onClick, Content, cssClass, isLoading }) =
             onClick ? onClick() : ""
         }}
     >
-        {Content}
+        {isLoading ? <Image src={BUTTON_BUFFER} width="80" height="20" objectFit="cover" /> : Content}
     </motion.button>
 );
 
@@ -60,7 +60,9 @@ const GlobalLightButton = ({ disabled, onClick, Content, cssClass, isLoading }) 
             onClick ? onClick() : ""
         }}
     >
-        <p>{Content}</p>
+        <p>
+        {isLoading ? <Image src={BUTTON_BUFFER} width="80" height="20" objectFit="cover" /> : Content}
+        </p>
     </motion.button>
 );
 

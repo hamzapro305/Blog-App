@@ -22,15 +22,27 @@ const BlogsSlice = createSlice({
             Author: "",
             content: "",
             createdAt: 0,
+            image: "",
+            Comments: [],
+            id: ""
         },
     },
     reducers: {
         setBlog: (state, { payload }) => {
-            state.Blog = payload;
+            state.Blog.title = payload.title
+            state.Blog.description = payload.description
+            state.Blog.content = payload.content
+            state.Blog.Author = payload.Author
+            state.Blog.createdAt = payload.createdAt
+            state.Blog.image = payload.image
+            state.Blog.id = payload.id
         },
         setBlogs: (state, { payload }) => {
             state.AllBlogs = payload;
         },
+        setBlogComments: (state, { payload }) => {
+            state.Blog.Comments = payload
+        }
     },
     extraReducers: {
         [getAllBlogs.fulfilled]: (state, { payload }) => {
@@ -41,5 +53,5 @@ const BlogsSlice = createSlice({
         },
     },
 });
-export const { setBlog, setBlogs } = BlogsSlice.actions;
+export const { setBlog, setBlogs, setBlogComments } = BlogsSlice.actions;
 export default BlogsSlice;
