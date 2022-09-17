@@ -46,10 +46,11 @@ const GlobalDarkButton = ({ disabled, onClick, Content, cssClass, isLoading }) =
     </motion.button>
 );
 
-const GlobalLightButton = ({ disabled, onClick, Content, cssClass, isLoading }) => (
+const GlobalLightButton = ({ disabled, onClick, Content, cssClass, isLoading, REF }) => (
     <motion.button
         whileTap={{scale: .9}}
         whileHover={{scale: 1.04}}
+        ref={REF}
         disabled={disabled === true ? true : false}
         className={`GlobalLightButton ${cssClass ? cssClass : ""}`}
         onClick={() => {

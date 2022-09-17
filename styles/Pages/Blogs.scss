@@ -63,6 +63,7 @@
         z-index: 10000;
         padding: 20px;
         backdrop-filter: blur(500px);
+        background-color: rgba(0, 0, 0, 0.233);
         .wrapper{
             background-color: white;
             padding: 20px;
@@ -74,6 +75,11 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                .actions{
+                    display: flex;
+                    gap: 10px;
+                    align-items: center;
+                }
             }
             .selectedBlog-body{
                 .title{

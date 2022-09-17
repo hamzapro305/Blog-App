@@ -2,7 +2,7 @@ import { GlobalLightButton } from "Components/GlobalComponents/GlobalButtons";
 import { ErrorToast } from "Components/HSToast";
 import SingleBlogCommentActions from "Firebase/SingleBlogCommentActions";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import BlogComment from "./BlogComment";
 
@@ -11,6 +11,8 @@ const BlogComments = ({ id }) => {
   const Comments = useSelector(s => s.Blogs.Blog.Comments)
   const uid = useSelector(s => s.Auth?.User?.uid)
   const CurrentUser = useSelector((state) => state.Auth.User);
+
+  const ButtonRef = useRef()
 
   const [Load, setLoad] = useState(false)
   const [Value, setValue] = useState("")
@@ -44,8 +46,8 @@ const BlogComments = ({ id }) => {
                 <div className="title">Comments</div>
             </div>
             <div className="addComment">
-              <input type="text" placeholder="Your Comment" value={Value} onChange={(e) => setValue(e.target.value)}/>
-              <GlobalLightButton isLoading={Load} Content="Add Comment" onClick={() => {Submit(setLoad, "", Value, setValue)}}/>
+              <input type="text" placeholder="Your Comment" value={Value} onChange={(e) => setValue(e.target.value)} onKeyDown={(e) => e.code === "Enter" ? ButtonRef.current.click() : ""} />
+              <GlobalLightButton REF={ButtonRef} isLoading={Load} Content="Add Comment" onClick={() => {Submit(setLoad, "", Value, setValue)}}/>
             </div>
             <LayoutGroup>  
               <motion.div layout className="AllComments">

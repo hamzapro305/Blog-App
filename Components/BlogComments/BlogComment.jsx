@@ -5,7 +5,7 @@ import AuthActions from "Firebase/AuthActions";
 import SingleBlogCommentActions from "Firebase/SingleBlogCommentActions";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 
 const BlogComment = ({ Comment }) => {
@@ -14,6 +14,9 @@ const BlogComment = ({ Comment }) => {
     const uid = useSelector(s => s.Auth?.User?.uid)
     const id = useSelector((state) => state.Blogs.Blog.id);
     const CurrentUser = useSelector((state) => state.Auth.User);
+
+    const ButtonRef = useRef()
+    const InputRef = useRef();
 
     const [isReplying, setIsReplying] = useState(false)
     const [Load, setLoad] = useState(false)
@@ -34,6 +37,12 @@ const BlogComment = ({ Comment }) => {
         Comment.id,
         Comments
     );
+
+    const FocusOnInput = () => {
+        if(InputRef?.current){
+            InputRef.current.focus()
+        }
+    }
 
     const canReply = () => {
         if(CurrentUser){
@@ -78,14 +87,14 @@ const BlogComment = ({ Comment }) => {
                 <div className="right">
                     <div className="name">{User?.displayName}</div>
                     <div className="msg">{Comment.body}</div>
-                    <AnimatePresence exitBeforeEnter>
+                    <AnimatePresence exitBeforeEnter onExitComplete={FocusOnInput}>
                     {isReplying ? 
                         <motion.div key="add" {...CommentAnimation} className="addComment">
-                            <input type="text" placeholder="Your Comment" value={Value} onChange={(e) => setValue(e.target.value)}/>
-                            <GlobalLightButton isLoading={Load} Content="Add Comment" onClick={() => {Submit(setLoad, Comment.id, Value, setValue)}} />
+                            <input type="text" ref={InputRef} placeholder="Your Comment" value={Value} onChange={(e) => setValue(e.target.value)} onKeyDown={(e) => e.code === "Enter" ? ButtonRef.current.click() : ""} />
+                            <GlobalLightButton isLoading={Load} Content="Add Comment" onClick={() => {Submit(setLoad, Comment.id, Value, setValue)}} REF={ButtonRef}/>
                             <GlobalLightButton onClick={canReply} Content="Cancel"/>
                         </motion.div> : 
-                        <motion.div key="actions" {...CommentAnimation} className="actions">
+                        <motion.div key="actions"  {...CommentAnimation} className="actions">
                             <GlobalLightButton onClick={canReply} Content="Reply"/>
                             {uid === Comment.uid && <GlobalLightButton Content="Delete" onClick={Delete} isLoading={DeleteLoad}/>}
                         </motion.div>

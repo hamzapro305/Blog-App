@@ -3,8 +3,19 @@ import Image from "next/image";
 import { useDispatch } from "react-redux";
 import { setGlobalModal } from "Redux/Slices/GlobalVarialbesSlice";
 import parse from "html-react-parser";
+import { useRouter } from "next/router";
+import { GlobalMainButton } from "Components/GlobalComponents/GlobalButtons";
 
 const SelectedBlogModal = ({ SelectedBlog, setSelectedBlog }) => {
+    const router = useRouter()
+    const RemoveModal = () => {
+        setSelectedBlog(null)
+        dispatch(setGlobalModal(false));
+    }
+    const GoToBlog = (Blog) => {
+        RemoveModal()
+        router.push(`/blog/${Blog.id}`);
+    }
     const dispatch = useDispatch()
     return (
         <motion.div
@@ -15,14 +26,10 @@ const SelectedBlogModal = ({ SelectedBlog, setSelectedBlog }) => {
             <div className="wrapper">
                 <div className="head">
                     <div className="author">{SelectedBlog.Author}</div>
-                    <button
-                        onClick={() => {
-                            setSelectedBlog(null);
-                            dispatch(setGlobalModal(false));
-                        }}
-                    >
-                        close
-                    </button>
+                    <div className="actions">
+                        <GlobalMainButton onClick={RemoveModal} Content="close" />
+                        <GlobalMainButton onClick={() => GoToBlog(SelectedBlog)} Content="Full View" />
+                    </div>
                 </div>
                 <div className="selectedBlog-body">
                     <div className="title">{SelectedBlog.title}</div>

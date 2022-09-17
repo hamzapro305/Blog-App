@@ -19,7 +19,6 @@ const Blogs = () => {
     }, [dispatch]);
     const router = useRouter();
     const PushToBlog = (Blog) => {
-        // router.push(`/blog/${Blog.id}`);
         setSelectedBlog(Blog)
         dispatch(setGlobalModal(true))
     };
