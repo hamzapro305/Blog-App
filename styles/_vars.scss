@@ -82,3 +82,37 @@ $YellowClr: #FFEA11;
     max-width: 1620px;
     margin: 0 auto;
 }
+
+@mixin BlogContentCss {
+    h1{
+        font-size: 45px;
+    }
+    h2{
+        font-size: 35px;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        margin: 20px 0;
+
+    }
+    p {
+        margin: 10px 0;
+        font-size: 23px;
+        line-height: 1.5;
+    }
+    img{
+        width: 100%;
+    }
+    li {
+        margin-left: 2rem;
+
+    }
+    * {
+        font-family: $MF;
+
+    }
+}

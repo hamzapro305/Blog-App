@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setUser } from "Redux/Slices/UserSlice";
 
 const ExternalUtilities = ({ AllPages }) => {
-    const { header, footer } = useSelector((state) => state.GlobalVariables);
+    const { header, footer, modal } = useSelector((state) => state.GlobalVariables);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -21,6 +21,15 @@ const ExternalUtilities = ({ AllPages }) => {
             unsubscribe();
         };
     }, []);
+
+    useEffect(() => {
+        const Wrapper = document.documentElement
+        if(modal){
+            Wrapper.style.overflowY = "hidden"
+        }else{
+            Wrapper.style.overflowY = "unset"
+        }
+    }, [modal])
 
     return (
         <div className="Main_Blog_App">

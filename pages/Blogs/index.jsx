@@ -1,5 +1,5 @@
-import { useEffect } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import Head from "next/head";
 import { PLACE_HOLDER } from "../../Assets";
 import { useRouter } from "next/router";
@@ -7,8 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllBlogs } from "Redux/Slices/BlogsSlice";
 import PageTransitionLayout from "Components/GlobalComponents/PageTransitionLayout";
 import Image from "next/image";
+import { setGlobalModal } from "Redux/Slices/GlobalVarialbesSlice";
+import SelectedBlogModal from "Components/Modals/SelectedBlogModal";
 
 const Blogs = () => {
+    const [SelectedBlog, setSelectedBlog] = useState(null)
     const dispatch = useDispatch();
     const Blogs = useSelector((state) => state.Blogs.AllBlogs);
     useEffect(() => {
@@ -16,7 +19,9 @@ const Blogs = () => {
     }, [dispatch]);
     const router = useRouter();
     const PushToBlog = (Blog) => {
-        router.push(`/blog/${Blog.id}`);
+        // router.push(`/blog/${Blog.id}`);
+        setSelectedBlog(Blog)
+        dispatch(setGlobalModal(true))
     };
     return (
         <PageTransitionLayout>
@@ -32,10 +37,12 @@ const Blogs = () => {
                                 return (
                                     <motion.div
                                         key={b.id}
+                                        layoutId={b.id}
+                                        layout
                                         className="card"
                                         onClick={() => PushToBlog(b)}
                                     >
-                                        <Image alt="" placeholder={PLACE_HOLDER} src={b?.image ? b.image : PLACE_HOLDER} layout="fill" objectFit="cover" quality={1} />
+                                        <Image alt="" placeholder={PLACE_HOLDER} src={b?.image ? b.image : PLACE_HOLDER} layout="fill" objectFit="cover" quality={100} />
                                         <div className="space-100"></div>
                                         <div className="content">
                                             <div className="title-card">
@@ -59,8 +66,14 @@ const Blogs = () => {
                             })}
                     </div>
                 </div>
+                <AnimatePresence>
+                    {
+                        SelectedBlog && <SelectedBlogModal SelectedBlog={SelectedBlog} setSelectedBlog={setSelectedBlog}/>
+                    }
+                </AnimatePresence>
             </div>
         </PageTransitionLayout>
     );
 };
+
 export default Blogs;

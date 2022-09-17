@@ -4,7 +4,8 @@ const GlobalVariableSlice = createSlice({
     name: "GlobalVariables",
     initialState: {
         header: true,
-        footer: true
+        footer: true,
+        modal: false,
     },
     reducers: {
         setHeader: (state, { payload }) => {
@@ -12,10 +13,13 @@ const GlobalVariableSlice = createSlice({
         },
         setFooter: (state, { payload }) => {
             state.footer = payload
+        },
+        setGlobalModal: (state, { payload }) => {
+            state.modal = payload
         }
     }
 
 })
 
-export const { setHeader, setFooter } = GlobalVariableSlice.actions
+export const { setGlobalModal, setHeader, setFooter } = GlobalVariableSlice.actions
 export default GlobalVariableSlice;

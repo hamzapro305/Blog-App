@@ -29,6 +29,7 @@
                 min-height: 300px;
                 display: flex;
                 flex-direction: column;
+                height: 450px;
                 justify-content: flex-end;
                 .space-100{
                     padding: 100px 0;
@@ -49,6 +50,44 @@
                         font-family: $MF;
                         font-weight: 400;
                     }
+                }
+            }
+        }
+    }
+    .SelectedBlog{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 10000;
+        padding: 20px;
+        backdrop-filter: blur(500px);
+        .wrapper{
+            background-color: white;
+            padding: 20px;
+            border-radius: 1rem;
+            width: 100%;
+            height: 100%;
+            overflow-y: scroll;
+            .head{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .selectedBlog-body{
+                .title{
+                    color: black;
+                    font-size: 25px;
+                }
+                .image{
+                    position: relative;
+                    width: 100%;
+                    height: 40vh;
+                }
+                .content{
+                    padding: 20px 0;
+                    @include BlogContentCss();
                 }
             }
         }
